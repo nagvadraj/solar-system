@@ -22,12 +22,12 @@ jobs:
         - name: JFrog CLI setup 🐸
           uses: jfrog/setup-jfrog-cli@v4
           env:
-           JF_URL: ${{ vars.JF_URL }}
-           JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
-           JF_USER: ${{vars.JF_USER}}
-           JF_ACCESS_TOKEN: ${{secrets.JF_ACCESS_TOKEN}}
-           DOCKER_JF_RT_REPO: ${{secrets.DOCKER_JF_RT_REPO}}
-           NPM_JF_RT_REPO: ${{vars.NPM_JF_RT_REPO}}
+            JF_URL: ${{ vars.JF_URL }}
+            JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+            JF_USER: ${{ vars.JF_USER }}
+            JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
+            DOCKER_JF_RT_REPO: ${{ secrets.DOCKER_JF_RT_REPO }}
+            NPM_JF_RT_REPO: ${{ vars.NPM_JF_RT_REPO }}
         - name: Setup NodeJS Version
           run: |
             # Configure the project
