@@ -17,12 +17,21 @@ jobs:
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
-
+          - name: JFrog CLI setup 🐸
+          uses: jfrog/setup-jfrog-cli@v4
+          env:
+           JF_URL: ${{ secrets.JF_URL }}
+           JF_PASSWORD: ${{ secrets.JF_PASSWORD }}
+           JF_USER: ${{secrets.JF_USER}}
+           JF_ACCESS_TOKEN: ${{secrets.JF_ACCESS_TOKEN}}
+           DOCKER_JF_RT_REPO: ${{secrets.DOCKER_JF_RT_REPO}}
+           NPM_JF_RT_REPO: ${{secrets.NPM_JF_RT_REPO}}
         - name: Setup NodeJS Version
-          uses: actions/setup-node@v4
-          with:
-            node-version: 20
-            registry-url : https://registry.nmpjs.org
+          run: |
+            # Configure the project
+            jf npmc --repo-resolve nag-npm-virtual --repo-deploy nag-npm-virtual
+            # Build the project using JFrog CLI
+            jf npm install --build-name ${{env.BUILD_NAME}} --build-number ${{github.run_number}}
     
         - name: Install Dependencies
           run: npm install
