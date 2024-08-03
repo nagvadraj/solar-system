@@ -28,11 +28,12 @@ jobs:
             JF_ACCESS_TOKEN: ${{ secrets.JF_ACCESS_TOKEN }}
             NPM_JF_RT_REPO: ${{ vars.NPM_JF_RT_REPO }}
         - name: Setup NodeJS Version
-          run: |
-            # Configure the project
-            jf npmc --repo-resolve nag-npm-virtual --repo-deploy nag-npm-virtual
-            # Build the project using JFrog CLI
-            jf npm install --build-name ${{env.BUILD_NAME}} --build-number ${{github.run_number}}
+          uses: actions/setup-node@v4
+          with:
+              node-version: 20
+      
+        - name: Install Dependencies
+          run: npm install
     
         - name: Unit Testing
           run: npm test
