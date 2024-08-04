@@ -50,6 +50,8 @@ jobs:
 
     code-coverage:
           name: Code Coverage
+          env:
+            MONGO_URI: mongodb+srv://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@cluster0.vbdphob.mongodb.net
           runs-on: ubuntu-latest
         
           steps:
