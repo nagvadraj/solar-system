@@ -7,7 +7,7 @@ on:
       - main
       - 'feature/*'
 env:
-  MONGO_URI: mongodb+srv://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@cluster0.vbdphob.mongodb.net/mydb?retryWrites=true&w=majority
+  MONGO_URI: mongodb+srv://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@cluster0.mongodb.net/mydb?retryWrites=true&w=majority
 jobs:
     unit-testing:
         name: Unit Testing
