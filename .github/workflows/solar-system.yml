@@ -72,7 +72,7 @@ jobs:
       
           - name: Check Code Coverage
             id: nodejs-code-coverage-step
-            run: npm run coverage test
+            run: npm run coverage
             
           - name: Archive Test Result
             if: always()
