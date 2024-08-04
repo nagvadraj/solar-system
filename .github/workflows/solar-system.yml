@@ -51,7 +51,9 @@ jobs:
     code-coverage:
           name: Code Coverage
           runs-on: ubuntu-latest
-        
+          env:
+             MONGO_URI: mongodb+srv://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@cluster0.mongodb.net/mydb?retryWrites=true&w=majority
+
           steps:
           - name: Checkout Repository
             uses: actions/checkout@v4
