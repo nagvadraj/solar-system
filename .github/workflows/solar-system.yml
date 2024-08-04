@@ -51,7 +51,7 @@ jobs:
     code-coverage:
           name: Code Coverage
           env:
-            MONGO_URI: mongodb://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@cluster0.mongodb.net/mydb?retryWrites=true&w=majority
+            MONGO_URI: mongodb://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@cluster0.mongodb.net/
           runs-on: ubuntu-latest
         
           steps:
