@@ -45,7 +45,7 @@ jobs:
           if: always()
           uses: actions/upload-artifact@v4
           with:
-            name: Mocha-Test-Result
+            name: Mocha-Test-Result-${{github.run_number}}
             path: test-results.xml
 
     code-coverage:
@@ -78,6 +78,6 @@ jobs:
             if: always()
             uses: actions/upload-artifact@v4
             with:
-              name: Code-Coverage-Result
+              name: Code-Coverage-Result-${{github.run_number}}
               path: coverage
               retention-days: 5
