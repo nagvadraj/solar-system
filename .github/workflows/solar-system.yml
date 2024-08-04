@@ -7,7 +7,7 @@ on:
       - main
       - 'feature/*'
 env:
-  MONGO_URI: 'mongodb+srv://nagaraju:<password>@cluster0.vbdphob.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+  MONGO_URI: 'mongodb+srv://cluster0.vbdphob.mongodb.net/mydb'
   MONGO_USERNAME: nagaraju
   MONGO_PASSWORD: nagaraju
     
@@ -21,7 +21,7 @@ jobs:
           uses: actions/checkout@v4
 
         - name: Setup NodeJS Version
-          uses: actions/setup-node@v3
+          uses: actions/setup-node@v4
           with:
             node-version: 20
     
