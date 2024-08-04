@@ -99,4 +99,4 @@ jobs:
           with:
             context: .
             push: false
-            tags: ${{ DOCKER_USER }}/solar-system:${{ github.sha }}
+            tags: ${{ vars.DOCKER_USER }}/solar-system:${{ github.sha }}
