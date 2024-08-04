@@ -9,7 +9,7 @@ on:
 env:
   MONGO_URI: 'mongodb+srv://cluster0.vbdphob.mongodb.net/mydb'
   MONGO_USERNAME: nagaraju
-  MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
+  MONGO_PASSWORD: ${{ secrets.MONGO_PASSWORD }}
 jobs:
     unit-testing:
         name: Unit Testing
