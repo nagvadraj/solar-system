@@ -2,7 +2,7 @@ const path = require('path');
 const express = require('express');
 const OS = require('os');
 const bodyParser = require('body-parser');
-const mongoose = require("mongoose");
+const mongodb = require("mongodb");
 const app = express();
 const cors = require('cors')
 
@@ -11,18 +11,25 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/')));
 app.use(cors())
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}, function(err) {
-    if (err) {
-        console.log("error!! " + err)
-    } else {
-      //  console.log("MongoDB Connection Successful")
-    }
-})
+const { MongoClient } = require('mongodb');
 
-var Schema = mongoose.Schema;
+const uri = 'mongodb+srv://nagaraju:nagaraju@cluster0.mongodb.net/mydb?retryWrites=true&w=majority';
+
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+async function connectToDatabase() {
+    try {
+        await client.connect();
+        console.log('Connected to MongoDB');
+        return client.db('mydb');
+    } catch (error) {
+        console.error('Error connecting to MongoDB', error);
+    }
+}
+
+module.exports = connectToDatabase;
+
+var Schema = mondodb.Schema;
 
 var dataSchema = new Schema({
     name: String,
@@ -32,7 +39,7 @@ var dataSchema = new Schema({
     velocity: String,
     distance: String
 });
-var planetModel = mongoose.model('planets', dataSchema);
+var planetModel = mongodb.model('planets', dataSchema);
 
 
 
