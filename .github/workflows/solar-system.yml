@@ -51,9 +51,6 @@ jobs:
     code-coverage:
           name: Code Coverage
           runs-on: ubuntu-latest
-          env:
-             MONGO_URI: mongodb://${{ vars.MONGO_USERNAME }}:${{ secrets.MONGO_PASSWORD }}@ac-z9qqbpp-shard-00-00.vbdphob.mongodb.net:27017,ac-z9qqbpp-shard-00-01.vbdphob.mongodb.net:27017,ac-z9qqbpp-shard-00-02.vbdphob.mongodb.net:27017/mydb?authSource=admin&replicaSet=atlas-xebg87-shard-0&retryWrites=true&w=majority&ssl=true
-
           steps:
           - name: Checkout Repository
             uses: actions/checkout@v4
