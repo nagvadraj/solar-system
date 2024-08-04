@@ -1,14 +1,23 @@
-name: Run tests with authentication
+name: Solar System Workflow
 
-on: [push]
-
+on: 
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'feature/*'
+env:
+  MONGO_URI: ''
+  MONGO_USERNAME:
+  MONGO_PASSWORD:
+    
 jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [20.x]
-        mongodb-version: ['6.0', '7.0']
+        node-version: [20.x, 22.x]
+        mongodb-version: ['6.0', '7.0', '8.0']
 
     steps:
     - name: Git checkout
@@ -34,3 +43,9 @@ jobs:
       run: npm test
       env:
         CI: true
+        
+        # - name: Archive Test Result
+        #   uses: actions/upload-artifact@v3
+        #   with:
+        #     name: Mocha-Test-Result
+        #     path: test-results.xml
